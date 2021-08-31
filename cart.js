@@ -1,12 +1,18 @@
+let noProducts = document.querySelector('.error')
 let totalValue = document.getElementById("total");
-    let dataDiv = document.getElementById("datadiv");
-    let cartData = JSON.parse(localStorage.getItem("ecart"));
-    let lengthDiv = document.getElementById("numofitems");
+let dataDiv = document.getElementById("datadiv");
+let cartData = JSON.parse(localStorage.getItem("ecart"));
+let lengthDiv = document.getElementById("numofitems");
 
 
     let total = 0;
         
     function displayProducts() {
+        if(cartData == null) {
+            noProducts.innerHTML = `<strong>Your hasn't added any products yet.Please click on <a href="form.html">Add Products </a> for adding new products<strong>`;
+            noProducts.style.textAlign = "center";
+            noProducts.style.fontSize = "36px";
+    }
         let div = document.createElement("div");
         let lengthP = document.createElement("p");
 

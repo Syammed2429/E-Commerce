@@ -12,11 +12,11 @@ let noProducts = document.querySelector('.error')
         // A function to display the products on the body
         function display() {
             if(!products) {
-                // console.log("No");
                 noProducts.innerHTML = `<strong>Your hasn't added any products yet.Please click on <a href="form.html">Add Products </a> for adding new products<strong>`;
                 noProducts.style.textAlign = "center";
                 noProducts.style.fontSize = "36px";
             }
+            
             //a forEach to loop through the products and append on body
             products.forEach(function (pData) {
                 let div = document.createElement("div");

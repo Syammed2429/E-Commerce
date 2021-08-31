@@ -68,9 +68,16 @@ let total = 0;
 
     //once the user click on checkout button it must redirect him to another page
     function checkout() {
-        setTimeout(function() {
-            window.location = 'success.html'
-        }, 2000)
-    }
+        if(!cartData) {
+            alert('Please add products to your cart before checkout');
+            return;
+        } 
+
+            setTimeout(function() {
+                window.location = 'success.html'
+            }, 2000)
+        }
+
+    
 
     displayProducts()

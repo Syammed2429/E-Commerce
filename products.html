@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Satisfy&display=swap" rel="stylesheet">
+    <title>E Commerce II</title>
+</head>
+<style>
+    #datadiv {
+        display : grid;
+        grid-template-columns: repeat(4,20%);
+        grid-gap: 5%;
+    }
+    img { 
+        height: 155px;
+    }
+
+    /* Header Style Start */
+
+    header {
+        width: auto;
+        height: 50px;
+        background: linear-gradient(to right, #00467f, #a5cc82);
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        padding: 5px;    
+    }
+    header li {
+        display : inline-block;
+        margin: 1rem 1rem;
+        position: relative;
+        left: 95rem;
+        font-size: 22px;
+        font-family: 'Satisfy', cursive;
+        
+        
+    }
+    a {
+        text-decoration: none;
+        color: black;
+
+    }
+    header a:hover , .active{
+        cursor: pointer;
+        color: #076585;
+        border-bottom: 1px solid red
+    }
+    /* Header Style End */
+
+    .error a {
+        color: green;
+    }
+
+</style>
+<body>
+    <header id="myDiv">
+        <li ><a href="products.html" class="btn active" >Products</a></li>
+        <li ><a href="form.html" class="btn">Add Products</a></li>
+        <li><a href="cart.html" class="btn"> My Cart</a></li>
+    </header>
+    <h1>E Commerce II</h1>
+    <div id="datadiv"></div>
+    <div class="error"></div>
+
+    <script>
+
+        let noProducts = document.querySelector('.error')
+
+        
+            
+        
+        //creating a variable and assigning the div id to it
+        let dataDiv =document.getElementById("datadiv");
+
+        //Accessing all the items from the localStorage withe the id Products abd assigning it to a variable
+        const products = JSON.parse(localStorage.getItem("products"));
+
+        // A function to display the products on the body
+        function display() {
+            if(!products) {
+                // console.log("No");
+                noProducts.innerHTML = `<strong>Your hasn't added any products yet.Please click on <a href="form.html">Add Products </a> for adding new products<strong>`;
+                noProducts.style.textAlign = "center";
+                noProducts.style.fontSize = "36px";
+            }
+            //a forEach to loop through the products and append on body
+            products.forEach(function (pData) {
+                let div = document.createElement("div");
+                
+                //assigning the productName value to the pName variable
+                let pName = document.createElement("p");
+                pName.innerHTML = pData.productName;
+
+                //assigning the productImage value to the pImage variable
+                let pImage = document.createElement("img");
+                pImage.src = pData.productImage;
+
+                //assigning the productPrice value to the pPrice variable
+                let pPrice = document.createElement("p");
+                pPrice.innerHTML = pData.productPrice;
+
+                //creating an button 
+                let button = document.createElement("button");
+                button.onclick = function () {
+                    addtoCart(pData);
+                }
+                button.innerHTML = "Add to Cart";
+                div.append(pImage,pName,pPrice,button);
+                dataDiv.append(div);
+                // console.log(pData.length);
+            });
+
+            //cretaing a new storage with an array
+            if(localStorage.getItem('ecart') == null) {
+                localStorage.setItem('ecart', '[]');
+            }
+
+
+
+            //adding the products to the above created storage
+            function addtoCart(products) {
+                let cartData = JSON.parse(localStorage.getItem('ecart'));
+
+                //if the product is already exists then it will not add that procuct
+                if (cartData.find(d => d.productName == products.productName)) {
+                    // show error
+                    alert("Product is already exists");
+                    } else {
+                        // proceed with the rest of the operation
+                        cartData.push(products);
+                        localStorage.setItem('ecart', JSON.stringify(cartData));
+                    }
+                }
+
+     
+
+
+        }
+        display();
+    </script>
+
+</body>
+</html>

@@ -6,71 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Satisfy&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="form.css">
     <title>E COmmerce - I</title>
-    <style>
-        form {
-            display: flex;
-            gap: 20px;
-            flex-direction: column;
-            align-items: flex-start
-        }
-                /* Header Style Start */
-
-    header {
-        width: auto;
-        height: 50px;
-        background: linear-gradient(to right, #00467f, #a5cc82);
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        padding: 5px;    
-    }
-    header li {
-        display : inline-block;
-        margin: 1rem 1rem;
-        position: relative;
-        left: 95rem;
-        font-size: 22px;
-        font-family: 'Satisfy', cursive;
-        
-        
-    }
-    a {
-        text-decoration: none;
-        color: black;
-
-    }
-    header a:hover , .active{
-        cursor: pointer;
-        color: #076585;
-        border-bottom: 1px solid red
-    }
-    /* Header Style End */
-    form {
-        width: 500px;
-        margin: auto;
-        
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%)
-
-    }
-    
-    .container {
-            width: 500px;
-            margin: auto;
-        }
-        .container input {
-            width: 500px;
-            padding: 5px;
-            margin: 15px 10px;
-        }
-        #btn {
-            width: 100px;
-        }
-    </style>
 </head>
 <body>
     <header id="myDiv">
@@ -96,48 +33,7 @@
         </form>
     </div>
     
-    <script>
-
-            // let ab= document.getElementById("myDiv");
-            // var li = ab.getElementsByClassName("btn");
-            
-            
-            // for (var i = 0; i < li.length; i++) {
-            //     li[i].addEventListener("click", function() {
-            //     var current = document.getElementsByClassName("active");
-            //     current[0].className = current[0].className.replace(" active", "");
-            //     this.className += " active";
-            // });
-            // }
-
-        //creating the function and assigning the values
-        function submitForm(e) {
-            e.preventDefault();
-            // var productsList = []; //creating an empty array
-
-            //creating the objet and getting the values by it's id
-            let productDetails = {
-                productName : document.getElementById('pname').value,
-                productPrice : document.getElementById('pprice').value,
-                productImage : document.getElementById('pimage').value,
-            };
-
-            if(localStorage.getItem('products') == null) {
-                localStorage.setItem('products',"[]");
-            }
-
-            let productsData = JSON.parse(localStorage.getItem('products'));
-            productsData.push(productDetails);
-            localStorage.setItem('products',JSON.stringify(productsData))
-            
-            console.log('productsData:', productsData)
-
-           
-
-
-        }
-
-    </script>
+    <script type="text/javascript" src="form.js"></script>
 </body>
 </html>
 

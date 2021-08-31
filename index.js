@@ -1,76 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Satisfy&display=swap" rel="stylesheet">
-    <title>E Commerce II</title>
-</head>
-<style>
-    #datadiv {
-        display : grid;
-        grid-template-columns: repeat(4,20%);
-        grid-gap: 5%;
-    }
-    img { 
-        height: 155px;
-    }
-
-    /* Header Style Start */
-
-    header {
-        width: auto;
-        height: 50px;
-        background: linear-gradient(to right, #00467f, #a5cc82);
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        padding: 5px;    
-    }
-    header li {
-        display : inline-block;
-        margin: 1rem 1rem;
-        position: relative;
-        left: 95rem;
-        font-size: 22px;
-        font-family: 'Satisfy', cursive;
-        
-        
-    }
-    a {
-        text-decoration: none;
-        color: black;
-
-    }
-    header a:hover , .active{
-        cursor: pointer;
-        color: #076585;
-        border-bottom: 1px solid red
-    }
-    /* Header Style End */
-
-    .error a {
-        color: green;
-    }
-
-</style>
-<body>
-    <header id="myDiv">
-        <li ><a href="products.html" class="btn active" >Products</a></li>
-        <li ><a href="form.html" class="btn">Add Products</a></li>
-        <li><a href="cart.html" class="btn"> My Cart</a></li>
-    </header>
-    <h1>E Commerce II</h1>
-    <div id="datadiv"></div>
-    <div class="error"></div>
-
-    <script>
-
-        let noProducts = document.querySelector('.error')
+let noProducts = document.querySelector('.error')
 
         
             
@@ -143,7 +71,3 @@
 
         }
         display();
-    </script>
-
-</body>
-</html>
